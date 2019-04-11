@@ -21,13 +21,13 @@ func (action Roll) Process(s *discordgo.Session, m *discordgo.MessageCreate) err
 	digits := 1
 	min := 1
 	
-	if len(input) == 18 {
+	if len(m.Content) == 18 {
 	  digits = 2
 	}
 
 	start := 16
 	fin := start + digits
-	maxStr := input[start:fin]
+	maxStr := m.Content[start:fin]
 
 	if maxInt, err := strconv.Atoi(maxStr); err == nil {
 		s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("%d", rand.Intn(maxInt - min) + min))

@@ -21,7 +21,7 @@ var PatternMatchType = map[string]string{
 	KeyEventList:   "(list|show|what|when).+?event",
 	KeyLostTheGame: "i lost the game",
 	KeySay:         "^!kimchi say ",
-	KeyRoll:        "^!kimchi roll a d(\d){1,2}$"
+	KeyRoll:        "^!kimchi roll a d(\\d){1,2}$",
 }
 
 // ActionGenerator represents a function that can generate an action from a message.
