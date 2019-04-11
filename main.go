@@ -6,6 +6,8 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+	"math/rand"
+	"time"
 
 	"github.com/nerdenough/kimchi/actions"
 
@@ -21,6 +23,9 @@ func main() {
 		fmt.Printf("Missing BOT_TOKEN environment variable.\n")
 		return
 	}
+
+	// Seed RNG
+	rand.Seed(time.Now().UnixNano())
 
 	// Create a new Discord session for the bot
 	discord, err := discordgo.New(fmt.Sprintf("Bot %s", token))
