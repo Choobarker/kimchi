@@ -30,7 +30,14 @@ func (action Roll) Process(s *discordgo.Session, m *discordgo.MessageCreate) err
 	maxStr := m.Content[start:fin]
 
 	if maxInt, err := strconv.Atoi(maxStr); err == nil {
-		s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("%d", rand.Intn(maxInt - min) + min))
+		output := 0
+
+		if maxInt <= 1 {
+			s.ChannelMessageSend(m.ChannelID, "You somehow roll a 0...")
+		}	else {
+			output = rand.Intn(maxInt) + min
+			s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("%d", output))
+		}
 	}
 
 	return nil
